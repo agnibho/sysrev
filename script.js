@@ -11,6 +11,26 @@ if(localStorage.getItem("bibliographies")){
 function write(){
   localStorage.setItem("bibliographies", JSON.stringify(bibgraph));
 }
+function abstractFormat(text){
+  console.log(text);
+  text="\n"+text;
+  text=text.replace(/\nobjectives?/i, "<strong>Objectives</strong>");
+  text=text.replace(/\nbackground/i, "<strong>Background</strong>");
+  text=text.replace(/\nmethods?/i, "\n<strong>Methods</strong>");
+  text=text.replace(/\ndesigns?/i, "\n<strong>Design</strong>");
+  text=text.replace(/\nmaterials? and methods?/i, "\n<strong>Materials and methods</strong>");
+  text=text.replace(/\nmethodology/i, "\n<strong>Methodology</strong>");
+  text=text.replace(/\ninterventions?/i, "\n<strong>Interventions</strong>");
+  text=text.replace(/\nstatistical analysis/i, "\n<strong>Statistical Analysis</strong>");
+  text=text.replace(/\nprincipal findings?/i, "\n<strong>Principal Findings</strong>");
+  text=text.replace(/\nfindings?/i, "\n<strong>Findings</strong>");
+  text=text.replace(/\noutcomes?/i, "\n<strong>Outcomes</strong>");
+  text=text.replace(/\nresults?/i, "\n<strong>Results</strong>");
+  text=text.replace(/\nconclusions?/i, "\n<strong>Conclusions</strong>");
+  text=text.replace(/\nsignificance/i, "\n<strong>Significance</strong>");
+  console.log(text);
+  return text;
+}
 function showAllBibs(){
   $("#all-bibs").html("");
   Object.values(bibgraph).forEach(function(bib){
@@ -82,7 +102,7 @@ $(document).ready(function(){
       flag="";
       if(item.selected[1]==true) flag="checked";
       if(item.selected[0]){
-        $("#step-2").html($("#step-2").html()+"<div class='list-group-item'><a href='#' class='to-select' data-step='1' data-cite='"+item.citationKey+"'><input type='checkbox' "+flag+" class='step-2-select'> "+item.title+" ["+item.creators[0].lastName+" et al]</a><pre>"+item.abstractNote+"</pre></div>");
+        $("#step-2").html($("#step-2").html()+"<div class='list-group-item'><a href='#' class='to-select' data-step='1' data-cite='"+item.citationKey+"'><input type='checkbox' "+flag+" class='step-2-select'> "+item.title+" ["+item.creators[0].lastName+" et al]</a><div class='abstract'>"+abstractFormat(item.abstractNote)+"</div></div>");
       }
     });
   });
