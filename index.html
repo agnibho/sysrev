@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SysRev</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Systemic Review Study Selector</h1>
+      <hr>
+      <div id="loader">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-heading">List of saved bibliographies</h3>
+            <ul id="all-bibs" class="list-group step-selector"></ul>
+          </div>
+        </div>
+        <div class="mt-2">
+          <input type="file" id="file-selector">
+          <button class="btn btn-outline-success" id="load-file">Load File</button>
+        </div>
+      </div>
+      <div id="step-1-div" class="d-none">
+        <h2>Step 1: Select by title</h2>
+        <div id="step-1" class="list-group step-selector">
+        </div>
+        <button class="btn btn-success mt-2" id="step-1to2">Next Step</button>
+        <button class="btn btn-secondary float-right mt-2" id="step-back">Back</button>
+      </div>
+      <div id="step-2-div" class="d-none">
+        <h2>Step 2: Select by abstract</h2>
+        <div id="step-2" class="list-group step-selector">
+        </div>
+        <button class="btn btn-success mt-2" id="step-2to3">Next Step</button>
+        <button class="btn btn-secondary float-right mt-2" id="step-2to1">Previous Step</button>
+      </div>
+      <div id="step-3-div" class="d-none">
+        <h2>Step 3: Select by fulltext</h2>
+        <div id="step-3" class="list-group step-selector">
+        </div>
+        <button class="btn btn-success mt-2" id="finish">Finish</button>
+        <button class="btn btn-secondary float-right mt-2" id="step-3to2">Previous Step</button>
+      </div>
+      <div id="download-div" class="d-none">
+        <h2>Final Selection</h2>
+        <ul id="finished" class="list-group"></ul>
+        <a class="btn btn-primary mt-2" href="#" download="download.json" id="download">Download</a>
+        <button class="btn btn-secondary float-right mt-2" id="step-backto3">Previous Step</button>
+      </div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
